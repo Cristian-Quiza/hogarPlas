@@ -1,4 +1,4 @@
-from msilib.schema import Class
+#from msilib.schema import Class
 from multiprocessing import Condition
 from tkinter import CASCADE, Entry
 from unicodedata import category
