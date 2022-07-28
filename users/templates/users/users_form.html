@@ -1,5 +1,55 @@
 {% extends "users/base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-{{form}}
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-4">
+            {{form.rol_id | as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.first_names | as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.last_names | as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.type_id | as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.num_document | as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.address | as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.phone | as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.email | as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.Password | as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+            {{form.Condition | as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.Rol | as_crispy_field}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-success btn-block btn lg"><i class="fas fa-database"></i>
+                Submit</button>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'users_list' %}" class="btn btn-secondary btn-block btn lg">
+                <i class="fas fa-stream"></i> Back to list
+            </a>
+        </div>
+    </div>
+    
+</form>
 {% endblock content %}

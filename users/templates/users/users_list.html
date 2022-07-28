@@ -1,5 +1,56 @@
 {% extends "users/base.html" %}
 
 {% block content %}
-<p>Mostraremos la lista de usuarios</p>
+
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Id Rol</td>
+            <td>First Names</td>
+            <td>last names</td>
+            <td>type id</td>
+            <td>Number Document</td>
+            <td>address</td>
+            <td>phone</td>
+            <td>email</td>
+            <td>Password</td>
+            <td>Condition</td>           
+            <td>Rol</td>
+            <td>
+                <a href="{% url 'users_insert' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add New User
+                </a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for users in users_list %}
+            <tr>
+                <td>{{users.rol_id}}</td>
+                <td>{{users.first_names}}</td>
+                <td>{{users.last_names}}</td>
+                <td>{{users.type_id}}</td>
+                <td>{{users.num_document}}</td>
+                <td>{{users.address}}</td>
+                <td>{{users.phone}}</td>
+                <td>{{users.email}}</td>
+                <td>{{users.Password}}</td>
+                <td>{{users.Condition}}</td>
+                <td>{{users.Rol}}</td>
+                <td>
+                    <a href="{% url 'users_update' users.id %}" class="btn text-secondary px-0">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'users_delete' users.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+         {% endfor %}
+    </tbody>
+</table>
+
 {% endblock content %}

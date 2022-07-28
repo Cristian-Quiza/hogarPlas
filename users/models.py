@@ -10,6 +10,9 @@ class Rol(models.Model):
     name = models.CharField(max_length=250, null=False, unique=True, verbose_name='Nombre')
     description = models.CharField(max_length=500)
     Condition = models.BooleanField()
+    
+    def __str__(self):
+        return self.name
 
 #CLASES MODELO QUE REPRESENTA EL MAPEO CON LAS TABLAS DE LAS BD
 class Users(models.Model):
@@ -24,6 +27,9 @@ class Users(models.Model):
     Password= models.CharField(max_length=10, null=False)
     Condition= models.BooleanField()
     Rol= models.ForeignKey(Rol, null=True, blank=True, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.rol_id
 
 class Category(models.Model):
     name= models.CharField(max_length=250, null=True)
